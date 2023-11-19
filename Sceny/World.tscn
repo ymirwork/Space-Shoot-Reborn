@@ -1,0 +1,135 @@
+[gd_scene load_steps=12 format=3 uid="uid://buqpvctmkbu8e"]
+
+[ext_resource type="Texture2D" uid="uid://dgycgko4y1yq" path="res://Assets/background.png" id="1_vhooj"]
+[ext_resource type="Script" path="res://Script/World.gd" id="1_w4cwc"]
+[ext_resource type="PackedScene" uid="uid://dtoa8814rtywa" path="res://Sceny/Player.tscn" id="2_jbk6y"]
+[ext_resource type="Script" path="res://Script/enemySpawner.gd" id="3_70xc6"]
+[ext_resource type="PackedScene" uid="uid://bxrh5jm11gc57" path="res://Sceny/small_Enemy.tscn" id="3_t4mna"]
+[ext_resource type="Texture2D" uid="uid://dmd6qotwwngrj" path="res://Assets/healthbarUnder.png" id="5_4vby2"]
+[ext_resource type="Texture2D" uid="uid://ceo4w6adrba4g" path="res://Assets/healthbarProgress.png" id="6_2r3os"]
+[ext_resource type="Texture2D" uid="uid://boylgaq37lsoo" path="res://Assets/background_end.png" id="7_653x0"]
+[ext_resource type="Script" path="res://Script/Score.gd" id="9_8vum6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ptgx"]
+size = Vector2(1639, 118)
+
+[sub_resource type="LabelSettings" id="LabelSettings_qeiji"]
+font_size = 30
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_w4cwc")
+
+[node name="background Texture" type="Sprite2D" parent="."]
+position = Vector2(234, 480)
+scale = Vector2(3.4082, 3.4082)
+texture = ExtResource("1_vhooj")
+
+[node name="Player" parent="." instance=ExtResource("2_jbk6y")]
+position = Vector2(305, 808)
+
+[node name="enemySpawner" type="Node2D" parent="."]
+script = ExtResource("3_70xc6")
+enemy_Scane = Array[PackedScene]([ExtResource("3_t4mna")])
+
+[node name="Timer" type="Timer" parent="enemySpawner"]
+autostart = true
+
+[node name="Outside" type="Area2D" parent="enemySpawner"]
+
+[node name="Collision" type="CollisionShape2D" parent="enemySpawner/Outside"]
+position = Vector2(354.5, 1094)
+shape = SubResource("RectangleShape2D_2ptgx")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 17.0
+offset_top = 862.0
+offset_right = 194.0
+offset_bottom = 948.0
+
+[node name="Health" type="CanvasLayer" parent="UI"]
+
+[node name="health_Progress_Bar" type="TextureProgressBar" parent="UI/Health"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = -121.0
+offset_right = 204.0
+offset_bottom = -91.0
+grow_vertical = 0
+texture_under = ExtResource("5_4vby2")
+texture_progress = ExtResource("6_2r3os")
+metadata/_edit_use_anchors_ = true
+
+[node name="Dead Screen" type="CanvasLayer" parent="UI"]
+visible = false
+
+[node name="background_end" type="Sprite2D" parent="UI/Dead Screen"]
+position = Vector2(269, 489)
+scale = Vector2(0.479688, 1.46389)
+texture = ExtResource("7_653x0")
+
+[node name="game_end" type="Label" parent="UI/Dead Screen"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.0
+offset_top = -13.0
+offset_right = 46.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "GAME OVER"
+label_settings = SubResource("LabelSettings_qeiji")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Button" type="Button" parent="UI/Dead Screen"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -85.0
+offset_top = 31.0
+offset_right = 87.0
+offset_bottom = 88.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "CLICK TO RESTART"
+icon_alignment = 1
+
+[node name="Score" type="CanvasLayer" parent="UI"]
+script = ExtResource("9_8vum6")
+
+[node name="texture_Score" type="Sprite2D" parent="UI/Score"]
+position = Vector2(108, 893)
+scale = Vector2(0.994792, 1.07176)
+texture = ExtResource("5_4vby2")
+
+[node name="ScoreCount" type="Label" parent="UI/Score"]
+offset_left = 99.0
+offset_top = 881.0
+offset_right = 196.0
+offset_bottom = 904.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreLebel" type="Label" parent="UI/Score"]
+offset_left = 22.0
+offset_top = 881.0
+offset_right = 100.0
+offset_bottom = 907.0
+text = "SCORE :"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="timeout" from="enemySpawner/Timer" to="enemySpawner" method="_on_timer_timeout"]
+[connection signal="area_entered" from="enemySpawner/Outside" to="enemySpawner" method="_on_area_2d_area_entered"]
+[connection signal="pressed" from="UI/Dead Screen/Button" to="." method="_on_button_pressed_restart_game"]

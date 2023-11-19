@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="enemy_Data_Resource" load_steps=2 format=3 uid="uid://dln3mbvrvsna"]
+
+[ext_resource type="Script" path="res://Script/enemyData_Resource.gd" id="1_k7q55"]
+
+[resource]
+script = ExtResource("1_k7q55")
+health = 10
+damage = 2.0
+ship_Speed = 200
+change_To_Drop = 0.1
+drop_xp = 1
+drop_xp_random = false
+score_Add = 2

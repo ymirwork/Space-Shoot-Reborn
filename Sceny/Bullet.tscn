@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://ds3dbhcl1eqte"]
+
+[ext_resource type="Texture2D" uid="uid://cx0nnxs6xpoeh" path="res://Assets/laser-bolts.png" id="1_dygeo"]
+[ext_resource type="Script" path="res://Script/Bullet.gd" id="1_prbpe"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o2tg0"]
+radius = 5.0
+height = 24.0
+
+[node name="Bullet" type="Area2D" groups=["Bullet"]]
+script = ExtResource("1_prbpe")
+
+[node name="Texture" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("1_dygeo")
+hframes = 2
+vframes = 2
+frame = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -1)
+shape = SubResource("CapsuleShape2D_o2tg0")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
