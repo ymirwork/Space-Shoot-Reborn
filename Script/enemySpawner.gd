@@ -9,7 +9,7 @@ func _on_timer_timeout() -> void:
 	var random_x = randi_range(0, viewport_x - 10)
 	enemy.position.x = random_x
 	enemy.position.y = -40
-	print("Enemy Spawned at: " + enemy.position.x + enemy.position.y)
+#	print("Enemy Spawned at: " + enemy.position.x + enemy.position.y)
 
 
 

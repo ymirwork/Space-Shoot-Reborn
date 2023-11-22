@@ -26,6 +26,8 @@ texture = ExtResource("1_vhooj")
 
 [node name="Player" parent="." instance=ExtResource("2_jbk6y")]
 position = Vector2(305, 808)
+health_Player = 5
+bullet_Speed = 300
 
 [node name="enemySpawner" type="Node2D" parent="."]
 script = ExtResource("3_70xc6")

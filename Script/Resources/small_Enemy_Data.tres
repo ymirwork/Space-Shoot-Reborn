@@ -8,6 +8,6 @@ health = 10
 damage = 2.0
 ship_Speed = 200
 change_To_Drop = 0.1
-drop_xp = 1
+xp_Add = 5
 drop_xp_random = false
 score_Add = 2

@@ -1,7 +1,6 @@
 extends Area2D
 class_name Bullet
 
-@export var speed_Bullet = 500
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -10,7 +9,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	position.y -= speed_Bullet * delta
+	position.y -= GlobalStats.speed_Bullet * delta
 
 
 

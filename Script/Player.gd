@@ -3,9 +3,12 @@ class_name Player
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 @export var health_Player: int = 5
+@export var bullet_Speed: int = 300
 @export var bullet_Scane: PackedScene
 @onready var dead_screen: CanvasLayer = $"../UI/Dead Screen"
 @onready var health_progress_bar: TextureProgressBar = $"../UI/Health/health_Progress_Bar"
+@onready var score_canvas_layer: CanvasLayer = $"../UI/Score"
+
 
 
 func _ready() -> void:
@@ -25,7 +28,7 @@ func _process(_delta: float) -> void:
 		var bullet_new = bullet_Scane.instantiate()
 		bullet_new.position = self.position
 		add_sibling(bullet_new)
-		
+
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Enemy"):
@@ -37,6 +40,8 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		if health_Player <= 0:
 			DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_VISIBLE)
 			dead_screen.show()
+			score_canvas_layer.hide()
+			health_progress_bar.hide()
 			print("Dead")
 			queue_free()
 		
