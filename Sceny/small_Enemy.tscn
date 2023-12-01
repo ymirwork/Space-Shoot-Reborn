@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bxrh5jm11gc57"]
+[gd_scene load_steps=9 format=3 uid="uid://bxrh5jm11gc57"]
 
 [ext_resource type="Texture2D" uid="uid://cktjmbsdtj7uo" path="res://Assets/enemy-small.png" id="1_5pvx0"]
 [ext_resource type="Script" path="res://Script/Enemy.gd" id="1_rlnap"]
 [ext_resource type="Resource" uid="uid://dln3mbvrvsna" path="res://Script/Resources/small_Enemy_Data.tres" id="2_c17sg"]
+[ext_resource type="Resource" uid="uid://bhuhkeibaagt3" path="res://Script/Resources/Player.tres" id="3_46pq3"]
 
 [sub_resource type="Animation" id="Animation_6o0br"]
 length = 0.001
@@ -49,6 +50,7 @@ light_mask = 2
 texture_filter = 1
 script = ExtResource("1_rlnap")
 enemy_Data = ExtResource("2_c17sg")
+player_Data = ExtResource("3_46pq3")
 
 [node name="Texture" type="Sprite2D" parent="."]
 rotation = -3.14159
@@ -64,5 +66,11 @@ libraries = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -2)
 shape = SubResource("CircleShape2D_oyq0y")
+
+[node name="Health_Enemy" type="ProgressBar" parent="."]
+offset_left = 20.0
+offset_top = -15.0
+offset_right = 50.0
+offset_bottom = 12.0
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

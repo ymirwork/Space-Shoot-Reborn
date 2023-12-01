@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://ds3dbhcl1eqte"]
+[gd_scene load_steps=5 format=3 uid="uid://ds3dbhcl1eqte"]
 
 [ext_resource type="Texture2D" uid="uid://cx0nnxs6xpoeh" path="res://Assets/laser-bolts.png" id="1_dygeo"]
 [ext_resource type="Script" path="res://Script/Bullet.gd" id="1_prbpe"]
+[ext_resource type="Resource" uid="uid://bhuhkeibaagt3" path="res://Script/Resources/Player.tres" id="2_6ss5c"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o2tg0"]
 radius = 5.0
@@ -9,6 +10,7 @@ height = 24.0
 
 [node name="Bullet" type="Area2D" groups=["Bullet"]]
 script = ExtResource("1_prbpe")
+player_Data = ExtResource("2_6ss5c")
 
 [node name="Texture" type="Sprite2D" parent="."]
 scale = Vector2(2, 2)

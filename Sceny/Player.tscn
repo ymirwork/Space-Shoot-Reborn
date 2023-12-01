@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dtoa8814rtywa"]
+[gd_scene load_steps=9 format=3 uid="uid://dtoa8814rtywa"]
 
 [ext_resource type="Texture2D" uid="uid://jqqu55dfridp" path="res://Assets/ship.png" id="1_24o44"]
 [ext_resource type="Script" path="res://Script/Player.gd" id="1_66esv"]
+[ext_resource type="Resource" uid="uid://bhuhkeibaagt3" path="res://Script/Resources/Player.tres" id="2_nqr6v"]
 [ext_resource type="PackedScene" uid="uid://ds3dbhcl1eqte" path="res://Sceny/Bullet.tscn" id="2_wpvxg"]
 
 [sub_resource type="Animation" id="Animation_7yco8"]
@@ -46,6 +47,7 @@ height = 40.0
 
 [node name="Player" type="Node2D" groups=["Player"]]
 script = ExtResource("1_66esv")
+player_Data = ExtResource("2_nqr6v")
 bullet_Scane = ExtResource("2_wpvxg")
 
 [node name="Texture" type="Sprite2D" parent="."]

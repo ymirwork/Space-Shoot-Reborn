@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://buqpvctmkbu8e"]
+[gd_scene load_steps=14 format=3 uid="uid://buqpvctmkbu8e"]
 
 [ext_resource type="Texture2D" uid="uid://dgycgko4y1yq" path="res://Assets/background.png" id="1_vhooj"]
 [ext_resource type="Script" path="res://Script/World.gd" id="1_w4cwc"]
@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://ceo4w6adrba4g" path="res://Assets/healthbarProgress.png" id="6_2r3os"]
 [ext_resource type="Texture2D" uid="uid://boylgaq37lsoo" path="res://Assets/background_end.png" id="7_653x0"]
 [ext_resource type="Script" path="res://Script/Score.gd" id="9_8vum6"]
-[ext_resource type="Script" path="res://Script/DebugPanel.gd" id="10_w0kyg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2ptgx"]
 size = Vector2(1639, 118)
@@ -157,7 +156,6 @@ offset_top = 10.0
 offset_right = 210.0
 offset_bottom = 210.0
 theme = SubResource("Theme_commb")
-script = ExtResource("10_w0kyg")
 
 [node name="MarginContainer" type="MarginContainer" parent="UI/debug_panel/DebugPanel"]
 layout_mode = 2
